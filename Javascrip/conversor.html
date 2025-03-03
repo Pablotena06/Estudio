@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conversor</title>
+</head>
+<body>
+    <h1>Conversor:</h1>
+    <label for="euros">€:</label>
+    <input type="text" id="euros"> <br> <br>
+
+    <label for="$">$:</label>
+    <input type="text" id="$"> <br> <br>
+
+    <button onclick="Euros_dolares()">Pasar a $:</button> <br>  
+    <p id="resultado"></p>
+
+    <button onclick="Dolares_euros()">Pasar a €:</button>
+    <p id="resultado1"></p>
+
+    <script>
+        /*Funcion de Euros a dolares*/
+        function Euros_dolares(){
+        let euros = parseFloat(document.getElementById("euros").value);
+        if(isNaN(euros)){
+                document.getElementById("resultado").innerHTML = "Debes introducir valores numéricos"
+            }
+        else{
+                let resultado = euros * 1.13;
+                document.getElementById("resultado").innerHTML = " " + resultado           
+            }
+        }
+
+        /*Funcion de Dolares a euros*/        
+        function Dolares_euros(){
+        let $ = parseFloat(document.getElementById("$").value);
+        if(isNaN($)){
+                document.getElementById("resultado1").innerHTML = "Debes introducir valores numéricos"
+            }
+        else{
+                let resultado = $ / 1.13;
+                document.getElementById("resultado1").innerHTML = " " + resultado           
+            }
+        }
+    </script>
+</body>
+</html>
