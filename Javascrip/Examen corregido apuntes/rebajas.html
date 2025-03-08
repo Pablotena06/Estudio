@@ -1,0 +1,54 @@
+<!DOCTYPE html>  <!-- Indica que el documento es un archivo HTML5. -->
+<html lang="es"> <!-- Define el idioma del documento como español. -->
+<head>
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres como UTF-8 para soportar caracteres especiales. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea adaptable a dispositivos móviles. -->
+    <title>Rebajas</title> <!-- Establece el título de la página que aparecerá en la pestaña del navegador. -->
+</head>
+<body>
+    <h1>Calculadora de rebajas</h1> <!-- Título principal de la página. -->
+    
+    <!-- Campo de texto donde el usuario ingresará el precio del artículo. -->
+    <input type="text" id="precio" placeholder="Precio del artículo"><br>
+    
+    <!-- Campo de texto donde el usuario ingresará el porcentaje de descuento. -->
+    <input type="text" id="descuento" placeholder="Descuento en porcentaje"><br>
+    
+    <!-- Botón que, al hacer clic, ejecuta la función calcular(). -->
+    <button onclick="calcular()">Calcular</button><br>
+    
+    <!-- Espacio para mostrar el resultado del precio con descuento. -->
+    <p>El precio con descuento es: <span id="resultado"></span></p>
+    
+    <script>
+        // Función para calcular el precio con el descuento aplicado.
+        function calcular(){
+            // Obtiene el valor del campo "precio" y lo convierte en un número flotante (decimal).
+            var precio = parseFloat(document.getElementById("precio").value);
+            
+            // Obtiene el valor del campo "descuento" y lo convierte en un número flotante (decimal).
+            var descuento = parseFloat(document.getElementById("descuento").value);
+
+            // Verifica si los valores ingresados son números válidos.
+            if (isNaN(precio) || isNaN(descuento)){
+                // Si alguno de los valores no es un número, muestra un mensaje de error.
+                document.getElementById("resultado").innerHTML = "Imposible calcular. Introduce números positivos";
+            }
+            else{
+                // Verifica si los valores son negativos.
+                if (precio < 0 || descuento < 0){
+                    // Si alguno de los valores es negativo, muestra un mensaje de error.
+                    document.getElementById("resultado").innerHTML = "Imposible calcular. Introduce números positivos";
+                }
+                else{   
+                    // Calcula el precio con descuento y lo redondea a dos decimales.
+                    var resultado = (precio * (1 - descuento / 100)).toFixed(2);
+                    
+                    // Muestra el resultado en el elemento con id "resultado", añadiendo el símbolo de euro.
+                    document.getElementById("resultado").innerHTML = resultado + "€";
+                }   
+            }
+        }
+    </script>
+</body>
+</html>
